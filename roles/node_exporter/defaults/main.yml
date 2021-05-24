@@ -1,14 +1,14 @@
 ---
 # defaults file for node_exporter
-description_node_exporter: node_exporter_unit
-netns_unit: my-netns-unit
-path_to_node_exporter_scripts: /usr/sbin/node_exp
+description_node_exporter: node_exporter_unit # Description for node_exporter service
+netns_unit: my-netns-unit  # Name of main(netNS&bird) service
+path_to_node_exporter_scripts: /usr/sbin/node_exp # Path for node-exporter file and scripts
 #/usr/sbin/node_exp
-node_exp_script: node_exporter_script
-node_exp_port: 9101
-node_exporter_name_unit: my-node-exp
+node_exp_script: node_exporter_script # Name of node_exporter script-file
+node_exp_port: 9101 # Port for node_exporter
+node_exporter_name_unit: my-node-exp # Name of service for node_exporter
 #node_exporter_unit
 path_to_systemd_system: /etc/systemd/system
 # /etc/systemd/system
-pid_name: echo.sh
-pid_find_script: pid_find
+pid_name: echo.sh # Name of pid in main(netNS&bird) service for finding
+pid_find_script: pid_find # Name of file for pid-ID finding
