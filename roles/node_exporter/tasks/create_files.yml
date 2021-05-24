@@ -1,0 +1,31 @@
+---
+# ====== Create files for node_exporter service
+- name: Make dir for node_exporter files
+  file: 
+    path: "{{ path_to_node_exporter_scripts }}"
+    state: directory
+    mode: 0744
+
+- name: copy node_exporter file
+  copy: 
+    src: node_exporter
+    dest: "{{ path_to_node_exporter_scripts }}"
+    mode: 0744
+
+- name: Generate script for pid finding
+  template: 
+    src: pid_find.j2 
+    dest: "{{ path_to_node_exporter_scripts }}/{{ pid_find }}.sh" 
+    mode: 0744
+
+- name: Generate script for node_exporter launch
+  template: 
+    src: node_test.j2
+    dest: "{{ path_to_node_exporter_scripts }}/{{ node_exp_script }}.sh"
+    mode: 0744
+
+- name: Generate script node_exporter_unit file
+  template: 
+    src: my-node-exp.j2
+    dest: "{{ path_to_systemd_system }}/{{ node_exporter_name_unit }}.service"
+    mode: 0644

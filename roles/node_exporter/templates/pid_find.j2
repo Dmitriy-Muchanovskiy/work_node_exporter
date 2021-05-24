@@ -1,0 +1,36 @@
+#!/bin/bash
+netns=""
+while true
+do
+  # check creating netNS and wait if it not exist
+  if [[ $netns == ""  ]]; then
+    netns=$(ls /var/run/netns | grep lbrt)
+    #echo "netns after if condition ==\"\"  "
+    continue
+  else
+    #receiving number of netNS
+    #echo "netns equal $netns let calc pidp"
+    numns=$(lsns -t net -n -o NS,NSFS | grep $netns | awk '{print $1}')
+    if [[ $numns == "" ]]; then
+      #echo "numns is empty waiting"
+      continue
+    else
+      # while for receiving pid of wanted process 
+      #echo "numns equal $numns"
+      while true; do
+        pidp=$(ps -e -o pid,command:100,netns | grep $numns | grep echo.sh | awk '{print $1}')
+        if [[ $pidp == "" ]]; then
+          #if can't find then next while-step
+          #echo "pidp empty for $numns"
+          continue
+        else
+          # pidp is found - lest do next
+          #echo "while2 pidP equal $pidp"
+          break
+        fi
+      done
+      break
+    fi
+  fi
+done
+echo $pidp > {{ path_to_node_exporter_scripts }}/pidp.txt

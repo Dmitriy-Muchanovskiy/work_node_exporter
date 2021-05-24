@@ -1,0 +1,8 @@
+---
+
+- name: Create systemd unit for node_exporter
+  hosts: all
+  become: yes
+
+  roles:
+    - node_exporter

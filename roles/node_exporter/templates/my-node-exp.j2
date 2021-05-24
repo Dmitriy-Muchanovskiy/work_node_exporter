@@ -1,0 +1,10 @@
+[Unit]
+Description={{ description_node_exporter }}
+After={{ netns_unit }}.service
+PartOf={{ netns_unit }}.service
+[Service]
+ExecStartPre=/bin/bash {{ path_to_node_exporter_scripts }}/{{ pid_find }}.sh
+ExecStart=/bin/bash {{ path_to_node_exporter_scripts }}/{{ node_exp_script }}.sh
+Restart=always
+[Install]
+WantedBy=multi-user.target

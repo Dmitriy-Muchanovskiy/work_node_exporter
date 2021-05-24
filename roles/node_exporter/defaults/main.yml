@@ -1,0 +1,13 @@
+---
+# defaults file for node_exporter
+description_node_exporter: node_exporter_unit
+netns_unit: my-netns-unit
+path_to_node_exporter_scripts: /usr/sbin/node_exp
+#/usr/sbin/node_exp
+pid_find: pid_find
+node_exp_script: node_exporter_script
+node_exp_port: 9101
+node_exporter_name_unit: my-node-exp
+#node_exporter_unit
+path_to_systemd_system: /etc/systemd/system
+# /etc/systemd/system

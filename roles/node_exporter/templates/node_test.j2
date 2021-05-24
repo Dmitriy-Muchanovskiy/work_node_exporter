@@ -1,0 +1,5 @@
+#!/bin/bash
+pidp=$(cat {{ path_to_node_exporter_scripts }}/pidp.txt)
+
+{{ path_to_node_exporter_scripts }}/node_exporter --path.procfs="/proc/$pidp" --web.listen-address=":{{ node_exp_port }}"
+

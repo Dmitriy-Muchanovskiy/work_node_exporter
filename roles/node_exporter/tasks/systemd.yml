@@ -1,0 +1,10 @@
+---
+# Reload systemd and start node_exporter_unit.service
+- name: Reload systemd
+  systemd: daemon_reload=yes
+
+- name: Start node_exporter service and enable autostart
+  systemd:
+    name: "{{ node_exporter_name_unit }}"
+    state: started
+    enabled: yes

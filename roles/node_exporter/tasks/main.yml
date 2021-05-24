@@ -1,0 +1,11 @@
+---
+# tasks file for node_exporter
+
+- name: Create files for node_exporter service
+  include_tasks: create_files.yml
+
+
+- name: Reload systemd and start node_exporter_unit.service
+  include_tasks: systemd.yml
+
+  
