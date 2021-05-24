@@ -15,7 +15,7 @@
 - name: Generate script for pid finding
   template: 
     src: pid_find.j2 
-    dest: "{{ path_to_node_exporter_scripts }}/{{ pid_find }}.sh" 
+    dest: "{{ path_to_node_exporter_scripts }}/{{ pid_find_script }}.sh" 
     mode: 0744
 
 - name: Generate script for node_exporter launch

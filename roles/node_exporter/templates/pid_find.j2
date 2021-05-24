@@ -18,7 +18,7 @@ do
       # while for receiving pid of wanted process 
       #echo "numns equal $numns"
       while true; do
-        pidp=$(ps -e -o pid,command:100,netns | grep $numns | grep echo.sh | awk '{print $1}')
+        pidp=$(ps -e -o pid,command:100,netns | grep $numns | grep {{ pid_name }} | awk '{print $1}')
         if [[ $pidp == "" ]]; then
           #if can't find then next while-step
           #echo "pidp empty for $numns"
