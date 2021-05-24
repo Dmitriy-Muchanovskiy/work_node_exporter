@@ -20,7 +20,7 @@
 
 - name: Generate script for node_exporter launch
   template: 
-    src: node_test.j2
+    src: node_script.j2
     dest: "{{ path_to_node_exporter_scripts }}/{{ node_exp_script }}.sh"
     mode: 0744
 
