@@ -9,6 +9,6 @@ node_exp_port: 9101 # Port for node_exporter
 node_exporter_name_unit: my-node-exp # Name of service for node_exporter
 #node_exporter_unit
 path_to_systemd_system: /etc/systemd/system
-# /etc/systemd/system
+
 pid_name: echo.sh # Name of pid in main(netNS&bird) service for finding
 pid_find_script: pid_find # Name of file for pid-ID finding
