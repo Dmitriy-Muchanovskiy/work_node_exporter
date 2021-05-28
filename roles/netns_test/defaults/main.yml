@@ -1,0 +1,11 @@
+---
+# defaults file for netns_test
+path_to_systemd_system: /etc/systemd/system
+description_netns_service: test netns unit service
+name_netns: test_netns
+veth_name: veth_test
+vethns_name: veth_test_ns
+ip_addr_veth_netns: 10.9.9.9
+netns_test_name_unit: my-test-netns
+
+# sudo ip netns delete test_netns

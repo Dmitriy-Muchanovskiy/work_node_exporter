@@ -1,0 +1,17 @@
+[Unit]
+Description={{ description_netns_service }}
+[Service]
+Type=oneshot
+Wants=my-node-exp.service
+ExecStart=ip netns add {{ name_netns }}
+ExecStart=ip link add {{ veth_name }} type veth peer name {{ vethns_name }}
+ExecStart=ip link set {{ veth_name }} up
+ExecStart=ip link set {{ vethns_name }} netns {{ name_netns }}
+ExecStart=ip netns exec {{ name_netns }} ip link set {{ vethns_name }} up
+ExecStart=ip netns exec {{ name_netns }} ip link set lo up
+ExecStart=ip netns exec {{ name_netns }} ip addr add {{ ip_addr_veth_netns}}/24 dev {{ vethns_name }}
+
+
+
+[Install]
+WantedBy=multi-user.target

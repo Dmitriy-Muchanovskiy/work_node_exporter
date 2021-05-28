@@ -1,5 +1,6 @@
 ---
 # ====== Create files for node_exporter service
+
 - name: Make dir for node_exporter files
   file: 
     path: "{{ path_to_node_exporter_scripts }}"

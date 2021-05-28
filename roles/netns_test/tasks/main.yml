@@ -1,0 +1,19 @@
+---
+# tasks file for netns_test
+
+
+
+- name: Create test netns-unit file
+  template:
+    src: my-netns.j2
+    dest: "{{ path_to_systemd_system }}/{{ netns_test_name_unit }}.service"
+    mode: 0644
+  tags: netns_u_file
+
+- name: Reload systemd
+  systemd: daemon_reload=yes
+
+- name: Start netns-test-unit service
+  systemd:
+    name: "{{ netns_test_name_unit }}"
+    state: started
